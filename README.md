@@ -59,7 +59,7 @@ The final model is evaluated on a held-out test set to assess its performance on
 Once the model is deemed satisfactory, it can be deployed to make predictions on new data and assist healthcare professionals in identifying individuals at high risk of heart attacks.
 
 
-# Dataset description
+# Dataset Description
 
 The dataset is composed of 8763 observations. There are 24 independent variables and 1 dependent variable. Among 24 independent variables, there are 11 quantitative variables: age, cholesterol, blood pressure, heart rate, exercise hours per week, sedentary hours per day, income, BMI, triglyceride, physical activity days per week, sleep hours per day, and 13 categorical variables: sex, diabetes, family history, smoking, obesity, alcohol consumption, previous heart problems, medication use, country, continent, hemisphere, stress level, diet.
 
@@ -135,7 +135,7 @@ Box plots for each numerical variable were plotted with respect to 'Heart Attack
 
 # Exploratory Data Analysis
 
-##  Chi-Squared Test on Categorical Variables
+##  Chi-Squared Test
 
 The chi-squared test is a statistical test used to determine whether there is a significant relationship between two categorical variables. The test is performed to assess whether the categorical variables are significantly associated with the target or outcome variable.
 
@@ -159,6 +159,147 @@ The diagonal elements (where the row and column variables are the same) are all 
 The color coding in the matrix helps to quickly identify the strength and direction of the correlations. The darker the red color, the stronger the positive correlation, while the lighter the yellow color, the stronger the negative correlation.
 
 By analyzing the correlation matrix, the valuable insights into the relationships between the numerical variables in the dataset is that there exists no significant multi-correlations. This information was used to inform feature selection.
+
+# Data Preprocessing
+
+## Feature Engineering
+
+The initial dataset contained a mix of categorical and numerical features. To prepare the data for modeling, One-Hot Encoding on the categorical variables was done. This involved creating binary indicator columns for each unique category, allowing the machine learning algorithms to better understand and leverage these features.
+
+For example, the hemisphere column had two possible values: 'south' and 'north'. After one-hot encoding, this feature was transformed into two binary columns: south_hemisphere and north_hemisphere.
+
+This encoding process ensured that the categorical variables were properly represented in a format that could be effectively utilized by the machine learning models.
+
+# Model Selection
+
+## Train-Test Split
+
+After the feature engineering step, the dataset was split into training and testing sets, using an 80/20 ratio. This allowed the models to be evaluated on unseen data, ensuring that the results would generalize well to new, real-world instances.
+
+The train-test split was performed before any data scaling, in order to avoid data leakage. By doing so, the standard scaler parameters (i.e., mean and standard deviation) were calculated solely based on the training data, and then applied to both the training and testing sets. This is a crucial step to prevent the model from gaining an unfair advantage during the evaluation process.
+
+The rationale behind the 80/20 split is as follows:
+
+Model Training: The training set, which comprises 80% of the data, is used to fit the machine learning models. This larger portion of the data allows the models to learn the underlying patterns and relationships within the dataset effectively.
+
+Model Evaluation: The remaining 20% of the data is held out as the testing set. This unseen data is used to evaluate the performance of the trained models, providing an unbiased estimate of their generalization capabilities.
+
+By separating the dataset into training and testing sets, the models' performance on new, unseen data can be assessed, which is a critical step in ensuring the models can be deployed in real-world scenarios with confidence. Overall, the train-test split was a crucial preprocessing step that allowed the machine learning models to be trained and evaluated in a robust and unbiased manner, laying the foundation for the subsequent model development and comparison.
+
+## Data Scaling
+
+Following the train-test split, the numerical features were scaled using the standard scaler. This step is essential for many machine learning algorithms, as it helps to ensure that the features are on a similar scale, which can improve the numerical stability and convergence of the models.
+
+The standard scaler transforms the features by subtracting the mean and dividing by the standard deviation of each feature. This normalization process helps to prevent features with larger ranges from dominating the objective function during model training.
+
+By scaling the data after the train-test split, the scaling parameters were calculated solely based on the training data, and then applied to both the training and testing sets. This is a crucial step to prevent data leakage and ensure an unbiased evaluation of the models.
+
+## Handling Class Imbalance
+
+The dataset used for this heart risk prediction project exhibited a class imbalance, with a significantly higher proportion of participants without heart risk compared to those with heart risk. This imbalance can pose a challenge for many machine learning algorithms, as they may tend to favor the majority class and perform poorly on the minority class.
+
+To address this issue, several strategies to balance the dataset and improve the model's performance on both classes were explored:
+
+Unbalanced Data: In the first approach, the models were trained using the original, unbalanced dataset. This allowed a baseline performance for each algorithm without any specific handling of the class imbalance.
+
+Balanced Data: Next, oversampling techniques to balance the dataset were used. Specifically, the Synthetic Minority Over-sampling Technique (SMOTE) to generate synthetic examples of the minority class (participants with heart disease). This resulted in a balanced dataset with an equal number of instances for both classes.
+
+Training on Balanced, Testing on Unbalanced: In this approach, the models were trained on the balanced dataset created using SMOTE, but evaluated their performance on the original, unbalanced test set. This simulates a real-world scenario where the model would be deployed on unseen, potentially imbalanced data.
+
+___
+# Logistic Regression
+
+Logistic Regression is a widely used supervised learning algorithm for binary classification problems. It models the probability of a binary outcome as a function of one or more predictor variables. In this case, logistic regression was implemented using the scikit-learn library to predict the presence or absence of heart disease risk. 
+
+A grid search approach combined with cross-validation to optimize the hyperparameters of the logistic regression model was employed. Specifically, a grid of hyperparameters to search over was defined, including the regularization parameter C with values of 0.1, 1, and 10, and the regularization penalty penalty with options of 'l1' and 'l2'. Then a LogisticRegression model with the liblinear solver and set up a 5-fold cross-validation strategy using KFold was created.
+
+The performance of the logistic regression model was evaluated on the full dataset, as well as on a dataset containing a selected set of variables. The choice of input features can significantly impact the model's performance. By evaluating the model on the full dataset and the dataset with selected variables, the goal was to assess the importance of feature selection and understand how the model's performance may be affected by the input features.
+___
+## Initial Dataset Before Feature Selection   
+
+### Training and Testing on Unbalanced Data
+
+<img src="lr1.png" width="400" height="300" alt="Image Example"> 
+<img src="lr1.1.png" width="300" height="120" alt="Image Example"> 
+
+
+### Training and Testing on Balanced Data
+
+<img src="lr2.png" width="400" height="300" alt="Image Example"> 
+<img src="lr2.1.png" width="300" height="120" alt="Image Example"> 
+
+### Training on Balanced Data and Testing on Unbalanced Data
+
+<img src="lr3.png" width="400" height="300" alt="Image Example"> 
+<img src="lr3.1.png" width="300" height="120" alt="Image Example"> 
+___
+## Final Dataset After Feature selection
+
+### Training and Testing on Unbalanced Data
+
+<img src="lr4.png" width="400" height="300" alt="Image Example"> 
+<img src="lr4.1.png" width="300" height="120" alt="Image Example"> 
+
+
+### Training and Testing on Balanced Data
+
+<img src="lr5.png" width="400" height="300" alt="Image Example"> 
+<img src="lr5.1.png" width="300" height="120" alt="Image Example"> 
+
+### Training on Balanced Data and Testing on Unbalanced Data
+
+<img src="lr6.png" width="400" height="300" alt="Image Example"> 
+<img src="lr6.1.png" width="300" height="120" alt="Image Example"> 
+
+
+___
+# Support Vector Machines
+
+Support vector machines (SVMs) are a popular supervised learning algorithm used for classification and regression tasks. SVMs work by finding the hyperplane that best separates the data into distinct classes, while maximizing the margin between the hyperplane and the nearest data points. This makes SVMs well-suited for a variety of complex, high-dimensional classification problems.
+
+A SVM model to classify the presence or absence of heart disease risk was using the scikit-learn library, specifying a radial basis function (RBF) kernel and tuning the hyperparameters gamma and C. A grid search over a range of gamma values (0.01, 0.1, 1) and C values (1, 10, 100) combined with 5-fold cross-validation was performed to optimize the hyperparameters. This allowed selection of the best-performing model.
+
+Once the grid search was complete, the best-performing SVM model were retrieved and evaluated its performance on both the training and test sets. This provided insights into the model's generalization capabilities and its ability to make accurate predictions on unseen data.
+
+___
+## Initial Dataset Before Feature Selection   
+
+### Training and Testing on Unbalanced Data
+
+<img src="sv1.png" width="400" height="300" alt="Image Example"> 
+<img src="sv1.1.png" width="300" height="120" alt="Image Example"> 
+
+
+### Training and Testing on Balanced Data
+
+<img src="sv2.png" width="400" height="300" alt="Image Example"> 
+<img src="sv2.1.png" width="300" height="120" alt="Image Example"> 
+
+### Training on Balanced Data and Testing on Unbalanced Data
+
+<img src="sv3.png" width="400" height="300" alt="Image Example"> 
+<img src="sv3.1.png" width="300" height="120" alt="Image Example"> 
+
+___
+## Final Dataset After Feature selection
+
+### Training and Testing on Unbalanced Data
+
+<img src="sv5.png" width="400" height="300" alt="Image Example"> 
+<img src="sv5.1.png" width="300" height="120" alt="Image Example"> 
+
+
+### Training and Testing on Balanced Data
+
+<img src="sv6.png" width="400" height="300" alt="Image Example"> 
+<img src="sv6.1.png" width="300" height="120" alt="Image Example"> 
+
+### Training on Balanced Data and Testing on Unbalanced Data
+
+<img src="sv4.png" width="400" height="300" alt="Image Example"> 
+<img src="sv4.1.png" width="300" height="120" alt="Image Example"> 
+
+
 
 
 
