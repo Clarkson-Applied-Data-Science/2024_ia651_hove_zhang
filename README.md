@@ -1,7 +1,6 @@
 # 2024 Machine Learning IA651: Heart Attack Risk Prediction
-Authors: Tinovimba Hove and Wei Zhang
 
-Due Date: August 2, 2024
+Authors: Tinovimba Hove and Wei Zhang
 
 ![alt text](Plots/heart-attack.png)
 
