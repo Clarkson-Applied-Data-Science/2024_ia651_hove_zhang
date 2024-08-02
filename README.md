@@ -3,7 +3,7 @@ Authors: Tinovimba Hove and Wei Zhang
 
 Due Date: August 2, 2024
 
-![alt text](heart-attack.png)
+![alt text](Plots/heart-attack.png)
 
 
 # Introduction
@@ -20,7 +20,7 @@ According to the World Health Organization (WHO), cardiovascular diseases, which
 
 The objective of this project is to develop a reliable and accurate predictive model to support the early detection and prevention of heart attacks, ultimately contributing to improved cardiovascular health outcomes. The analysis process involves several key steps:
 
-![alt text](Flow.png)
+![alt text](Plots/Flow.png)
 
 ### Importing Libraries and Dataset
 
@@ -61,9 +61,12 @@ Once the model is deemed satisfactory, it can be deployed to make predictions on
 
 # Dataset Description
 
+Source: [Kaggle DataSet](https://www.kaggle.com/datasets/iamsouravbanerjee/heart-attack-prediction-dataset)
+
+
 The dataset is composed of 8763 observations. There are 24 independent variables and 1 dependent variable. Among 24 independent variables, there are 11 quantitative variables: age, cholesterol, blood pressure, heart rate, exercise hours per week, sedentary hours per day, income, BMI, triglyceride, physical activity days per week, sleep hours per day, and 13 categorical variables: sex, diabetes, family history, smoking, obesity, alcohol consumption, previous heart problems, medication use, country, continent, hemisphere, stress level, diet.
 
-![alt text](data.png)
+![alt text](Plots/data.png)
 
 
 # Data Cleaning
@@ -78,60 +81,60 @@ Firstly, we check the data shape, null values, and duplicates in the dataset, an
 
 The bar chart was used to display the distribution of heart risk count. As indicated above, Low indicates 0, which means no heart attack risk, while High indicates 1, which means heart attack risk.
 
-![alt text](Dist.png)
+![alt text](Plots/Dist.png)
 
 ## Distribution of Categorical Variables
 
 Histograms for each categorical variable were plotted with respect to 'Heart Attack Risk' to observe their distribution.
 Heart Attack Risk distribution by sex.
 
-![alt text](sex.png)
+![alt text](Plots/sex.png)
 
-![alt text](diabetes.png)
+![alt text](Plots/diabetes.png)
 
-![alt text](Dist.png)
+![alt text](Plots/Dist.png)
 
-![alt text](med.png)
+![alt text](Plots/med.png)
 
-![alt text](obesity.png)
+![alt text](Plots/obesity.png)
 
-![alt text](stress.png)
+![alt text](Plots/stress.png)
 
-![alt text](fam.png)
+![alt text](Plots/fam.png)
 
-![alt text](diet.png)
+![alt text](Plots/diet.png)
 
-![alt text](alcohol.png)
+![alt text](Plots/alcohol.png)
 
-![alt text](prev.png)
+![alt text](Plots/prev.png)
 
-![alt text](country.png)
+![alt text](Plots/country.png)
 
-![alt text](continent.png)
+![alt text](Plots/continent.png)
 
-![alt text](hemisphere.png)
+![alt text](Plots/hemisphere.png)
 
 ## Distribution of Numerical Variables
 
 Box plots for each numerical variable were plotted with respect to 'Heart Attack Risk' to observe their distribution. We also split the column ‘blood pressure’ into ‘Systolic_BP’ and ‘Diastolic_BP’.
 
-![alt text](age.png)
+![alt text](Plots/age.png)
 
-![alt text](hr.png)
+![alt text](Plots/hr.png)
 
-![alt text](chol.png)
+![alt text](Plots/chol.png)
 
-![alt text](phy.png)
+![alt text](Plots/phy.png)
 
-![alt text](bp1.png)
+![alt text](Plots/bp1.png)
 
-![alt text](bp2.png)
+![alt text](Plots/bp2.png)
 
-![alt text](bmi.png)
+![alt text](Plots/bmi.png)
 
-![alt text](income.png)
+![alt text](Plots/income.png)
 
-![alt text](exer.png)
+![alt text](Plots/exer.png)
 
 # Exploratory Data Analysis
 
@@ -139,7 +142,7 @@ Box plots for each numerical variable were plotted with respect to 'Heart Attack
 
 The chi-squared test is a statistical test used to determine whether there is a significant relationship between two categorical variables. The test is performed to assess whether the categorical variables are significantly associated with the target or outcome variable.
 
-![alt text](chisqu.png)
+![alt text](Plots/chisqu.png)
 
 The results show the chi-squared statistic (chi2) and the corresponding p-value (p-value) for each categorical variable. The p-value represents the probability of obtaining the observed test statistic (or a more extreme value) under the null hypothesis, which assumes that there is no significant relationship between the categorical variable and the target variable.
 
@@ -151,7 +154,7 @@ In summary, the results of the chi-squared test suggest that most of the categor
 
 A correlation matrix is a square matrix that shows the pairwise correlation coefficients between each pair of numerical variables in the dataset. The correlation coefficient ranges from -1 to 1, where -1 indicates a strong negative correlation, 0 indicates no correlation, and 1 indicates a strong positive correlation.
 
-![alt text](corr.png)
+![alt text](Plots/corr.png)
 
 The correlation matrix provides a visual representation of the strength and direction of the relationships between these numerical variables. Each cell in the matrix represents the correlation coefficient between the corresponding variables.
 
@@ -194,7 +197,7 @@ The standard scaler transforms the features by subtracting the mean and dividing
 
 By scaling the data after the train-test split, the scaling parameters were calculated solely based on the training data, and then applied to both the training and testing sets. This is a crucial step to prevent data leakage and ensure an unbiased evaluation of the models.
 
-## Handling Class Imbalance
+## Resampling: Handling Class Imbalance
 
 The dataset used for this heart risk prediction project exhibited a class imbalance, with a significantly higher proportion of participants without heart risk compared to those with heart risk. This imbalance can pose a challenge for many machine learning algorithms, as they may tend to favor the majority class and perform poorly on the minority class.
 
@@ -219,37 +222,38 @@ ___
 
 ### Training and Testing on Unbalanced Data
 
-<img src="lr1.png" width="400" height="300" alt="Image Example"> 
-<img src="lr1.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr1.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr1.1.png" width="300" height="120" alt="Image Example"> 
 
 
 ### Training and Testing on Balanced Data
 
-<img src="lr2.png" width="400" height="300" alt="Image Example"> 
-<img src="lr2.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr2.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr2.1.png" width="300" height="120" alt="Image Example"> 
 
 ### Training on Balanced Data and Testing on Unbalanced Data
 
-<img src="lr3.png" width="400" height="300" alt="Image Example"> 
-<img src="lr3.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr3.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr3.1.png" width="300" height="120" alt="Image Example"> 
+
 ___
 ## Final Dataset After Feature selection
 
 ### Training and Testing on Unbalanced Data
 
-<img src="lr4.png" width="400" height="300" alt="Image Example"> 
-<img src="lr4.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr4.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr4.1.png" width="300" height="120" alt="Image Example"> 
 
 
 ### Training and Testing on Balanced Data
 
-<img src="lr5.png" width="400" height="300" alt="Image Example"> 
-<img src="lr5.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr5.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr5.1.png" width="300" height="120" alt="Image Example"> 
 
 ### Training on Balanced Data and Testing on Unbalanced Data
 
-<img src="lr6.png" width="400" height="300" alt="Image Example"> 
-<img src="lr6.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/lr6.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/lr6.1.png" width="300" height="120" alt="Image Example"> 
 
 
 ___
@@ -266,44 +270,106 @@ ___
 
 ### Training and Testing on Unbalanced Data
 
-<img src="sv1.png" width="400" height="300" alt="Image Example"> 
-<img src="sv1.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv1.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv1.1.png" width="300" height="120" alt="Image Example"> 
 
 
 ### Training and Testing on Balanced Data
 
-<img src="sv2.png" width="400" height="300" alt="Image Example"> 
-<img src="sv2.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv2.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv2.1.png" width="300" height="120" alt="Image Example"> 
 
 ### Training on Balanced Data and Testing on Unbalanced Data
 
-<img src="sv3.png" width="400" height="300" alt="Image Example"> 
-<img src="sv3.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv3.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv3.1.png" width="300" height="120" alt="Image Example"> 
 
 ___
 ## Final Dataset After Feature selection
 
 ### Training and Testing on Unbalanced Data
 
-<img src="sv5.png" width="400" height="300" alt="Image Example"> 
-<img src="sv5.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv5.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv5.1.png" width="300" height="120" alt="Image Example"> 
 
 
 ### Training and Testing on Balanced Data
 
-<img src="sv6.png" width="400" height="300" alt="Image Example"> 
-<img src="sv6.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv6.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv6.1.png" width="300" height="120" alt="Image Example"> 
 
 ### Training on Balanced Data and Testing on Unbalanced Data
 
-<img src="sv4.png" width="400" height="300" alt="Image Example"> 
-<img src="sv4.1.png" width="300" height="120" alt="Image Example"> 
+<img src="Plots/sv4.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/sv4.1.png" width="300" height="120" alt="Image Example"> 
+
+___
+# Decision Trees 
+
+Decision trees algorithm are used for both classification and regression tasks. Decision trees work by recursively partitioning the feature space into smaller regions, and then making predictions based on the majority class or the average target value within each region.
+
+In this study, ecision trees for heart disease risk classification was employed. A NumPy array of maximum depth values to search over,  was created, ranging from 1 to 14 with a step of 1. This allowed systematic investigation of the impact of the maximum depth hyperparameter on the model's performance.
+
+A decision tree classifier using the scikit-learn library was then created, setting the maximum depth parameter to each value in the range defined. For each maximum depth value, the decision tree model was fit to the training data, made predictions on both the training and test sets, and computed the F1 score (averaged across classes) for both the training and test sets.
+
+By storing the training and test F1 scores for each maximum depth value, the goal was to analyze the model's behavior and select the best-performing decision tree. Typically, it is expected the training F1 score to increase as the maximum depth increases, as the model becomes more complex and can fit the training data more closely. However, the test F1 score may plateau or even decrease at some point due to overfitting. 
+
+<img src="Plots/maxdepth.png" width="600" height="400" alt="Image Example"> 
+
+After the grid search over the different max_depth values, it was determined that a maximum depth of 5 provided the best balance between training and test performance, avoiding overfitting. Therefore, proceeded to train a decision tree classifier with max_depth=5 on the full training data.
+
+<img src="Plots/decisiontree.png" width="800" height="500" alt="Image Example"> 
 
 
+The results demonstrate the effectiveness of decision trees for heart disease risk classification, and the importance of carefully selecting the hyperparameters to optimize the model's performance. By following this methodology, a decision tree classifier that achieved strong predictive performance on both the training and test sets was developed.
 
 
+<img src="Plots/dtconf.png" width="400" height="300" alt="Image Example"> 
+<img src="Plots/dtresult.png" width="300" height="120" alt="Image Example"> 
 
 
+___
+# Synthetic Predictions 
+
+To test the models, synthetic data was created with similar features to the original dataset. The predictions were made on the models that were trained using balanced data but tested using unbalanced data, as these were shown to have the best metrics produced.
+
+The synthetic data was generated using the make_classification() function from sklearn, creating 10 samples with the same number of features as the original training data. This ensured the synthetic data had similar characteristics to the real data.
+
+### For the logistic regression model, the synthetic data predictions had the following results:
+
+Actual Labels: [0 1 1 0 1 0 1 1 0 0]
+
+Predicted Labels: [1 0 1 1 0 1 0 0 0 1]
+
+### For the support vector machine, the synthetic data predictions had the following results:
+
+Actual Labels: [0 1 1 0 1 0 1 1 0 0]
+
+Predicted Labels: [1 1 1 1 1 1 1 1 1 1]
+
+### For the decision tree classifier, the synthetic data predictions had the following results:
+
+Actual Labels: [0 1 1 0 1 1 0 0 1 0]
+
+Predicted Labels: [1 1 1 1 1 1 1 1 1 1]
+
+___
+# Evaluation and Conclusion 
+
+Comparing performance of the three machine learning models - Logistic Regression, Support Vector Machine(SVM) and Decision Tree CLassifier. It is evident that all these differed model methods have their own pros & cons which needs to be taken care properly.
+
+The Logistic Regression model exhibited the most balanced performance across the different metrics. It maintained a reasonably high precision of 0.64 for the positive class, indicating it was effective at avoiding false positive predictions. However, its recall for the positive class was relatively lower at 0.51, meaning it failed to identify some of the actual positive instances. The overall accuracy of 0.50 was average, suggesting there is room for improvement in the model's ability to correctly classify the samples.
+
+In contrast, the SVM model showed a strong bias towards the positive class. While it had an extremely high recall of 0.99 for the positivee class, its recall for the negative class was quite low at 0.48. This indicates the SVM struggled to identify the majority of the actual negative samples. Additionally, the precision for the positive class was relatively low at 0.35, implying a high rate of false positive predictions. Similar to the Logistic Regression model, the SVM's overall accuracy of 0.50 was average.
+
+The Decision Tree Classifier exhibited the most pronounced bias, with an extremely high recall of 0.99 for the negative class and a very low recall of 0.02 for the positive class. This substantial imbalance in the model's ability to correctly identify the two classes led to a low precision of 0.41 for the positive class. However, the Decision Tree Classifier achieved the highest overall accuracy of 0.64 among the three models, suggesting it was better able to correctly classify the samples as a whole.
+
+In conclusion, each of the machine learning models demonstrated unique strengths and weaknesses in their performance. The Logistic Regression model maintained the most balanced approach, while the SVM and Decision Tree Classifier exhibited more pronounced biases.
+
+___
+# Future work
+
+The recommendations for this project in the future are: Incorporate additional data sources (e.g., medical records, lifestyle factors, genetic information) to provide a more comprehensive understanding of heart disease risk factors. Explore advanced feature engineering techniques, such as combining existing features and creating new ones based on domain knowledge, to identify the most informative predictors. Experiment with sophisticated machine learning models, including ensemble methods and deep learning architectures, to potentially improve predictive performance. Ensure model interpretability through the use of interpretable algorithms and explanation methods, providing valuable insights into the key factors driving the heart disease predictions. Evaluate the developed models on external datasets to assess their generalizability and robustness in real-world settings. Explore opportunities to deploy the models in clinical settings, either as standalone tools or integrated into existing healthcare systems, to facilitate the practical application of the risk prediction models. Establish a process for continuously updating the models as new data becomes available, maintaining their relevance and performance over time.
 
 
 
